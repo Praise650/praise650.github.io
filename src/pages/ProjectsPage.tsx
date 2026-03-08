@@ -15,6 +15,11 @@ const ProjectsPage = () => {
 
         {isLoading ? (
           <p className="text-sm text-muted-foreground">Loading…</p>
+        ) : projects.length === 0 ? (
+          <div className="border-t border-border py-16 text-center">
+            <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-2">No projects yet</p>
+            <p className="text-xs text-muted-foreground">Projects will appear here once added.</p>
+          </div>
         ) : (
           <div className="space-y-0">
             {projects.map((project) => (
