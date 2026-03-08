@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import PageShell from "@/components/PageShell";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
