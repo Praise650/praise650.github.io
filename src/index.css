@@ -61,6 +61,12 @@
     padding-bottom: var(--nav-height);
   }
 
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
   h1, h2, h3, h4 {
     @apply font-mono tracking-tight;
   }

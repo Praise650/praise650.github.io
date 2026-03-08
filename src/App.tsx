@@ -37,6 +37,7 @@ const App = () => (
         <BottomNav />
       </BrowserRouter>
     </TooltipProvider>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
