@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Save, Upload, X } from "lucide-react";
+import { Plus, Save, Upload, X, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { uploadArticleImage } from "@/hooks/useArticles";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
