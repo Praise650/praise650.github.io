@@ -58,12 +58,11 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    padding-bottom: var(--nav-height);
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 767px) {
     body {
-      padding-bottom: 0;
+      padding-bottom: var(--nav-height);
     }
   }
 
