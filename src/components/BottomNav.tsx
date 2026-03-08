@@ -1,10 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mail, BookOpen } from "lucide-react";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },
   { path: "/experience", label: "Work", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
+  { path: "/blog", label: "Blog", icon: BookOpen },
   { path: "/contact", label: "Contact", icon: Mail },
 ];
 
