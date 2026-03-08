@@ -1,12 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail, Settings } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mail } from "lucide-react";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },
   { path: "/experience", label: "Work", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
   { path: "/contact", label: "Contact", icon: Mail },
-  { path: "/manage", label: "Manage", icon: Settings },
 ];
 
 const BottomNav = () => {
