@@ -9,9 +9,9 @@ interface MarkdownRendererProps {
 
 const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
+    <div className="prose prose-neutral max-w-none">
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
-      className="prose prose-neutral max-w-none"
       components={{
         code({ className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
