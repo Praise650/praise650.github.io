@@ -31,6 +31,13 @@ const ManagePage = () => {
   const { data: skills = [] } = useSkills();
   const { data: projects = [] } = useProjects();
 
+  const { data: articles = [] } = useAllArticles();
+  const addArticle = useAddArticle();
+  const updateArticle = useUpdateArticle();
+  const removeArticle = useRemoveArticle();
+  const [editingArticle, setEditingArticle] = useState<Article | null>(null);
+  const [showArticleEditor, setShowArticleEditor] = useState(false);
+
   const addExperience = useAddExperience();
   const removeExperience = useRemoveExperience();
   const addSkill = useAddSkill();
