@@ -95,10 +95,11 @@ const ManagePage = () => {
         </p>
 
         <Tabs defaultValue="experience">
-          <TabsList className="w-full grid grid-cols-3 mb-8">
+          <TabsList className="w-full grid grid-cols-4 mb-8">
             <TabsTrigger value="experience" className="text-xs font-mono uppercase">Experience</TabsTrigger>
             <TabsTrigger value="skills" className="text-xs font-mono uppercase">Skills</TabsTrigger>
             <TabsTrigger value="projects" className="text-xs font-mono uppercase">Projects</TabsTrigger>
+            <TabsTrigger value="blog" className="text-xs font-mono uppercase">Blog</TabsTrigger>
           </TabsList>
 
           {/* Experience Tab */}
