@@ -149,7 +149,7 @@ const ArticleEditor = ({ article, onSave, onCancel, isPending }: ArticleEditorPr
           {published ? "Published" : "Draft"}
         </label>
         <Button onClick={handleSubmit} disabled={isPending || !title.trim()} className="gap-2">
-          {article ? <Save size={14} /> : <Plus size={14} />}
+          {isPending ? <Loader2 size={14} className="animate-spin" /> : article ? <Save size={14} /> : <Plus size={14} />}
           {article ? "Update" : "Create"}
         </Button>
       </div>
