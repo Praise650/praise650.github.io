@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Trash2, X, Pencil } from "lucide-react";
+import { Plus, Trash2, X, Pencil, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ManagePage = () => {
