@@ -111,7 +111,7 @@ const ManagePage = () => {
               <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} />
               <Textarea placeholder="Description" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} />
               <Button onClick={handleAddExperience} className="w-full gap-2" disabled={addExperience.isPending}>
-                <Plus size={14} /> Add Experience
+                {addExperience.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Experience
               </Button>
             </div>
             <div className="space-y-0">
