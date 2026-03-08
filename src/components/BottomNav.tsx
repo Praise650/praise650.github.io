@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mail, Settings } from "lucide-react";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },
-  { path: "/experience", label: "Experience", icon: Briefcase },
+  { path: "/experience", label: "Work", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
   { path: "/contact", label: "Contact", icon: Mail },
+  { path: "/manage", label: "Manage", icon: Settings },
 ];
 
 const BottomNav = () => {
@@ -14,7 +15,7 @@ const BottomNav = () => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 backdrop-blur-sm">
-      <div className="flex items-center justify-around h-[var(--nav-height)] max-w-lg mx-auto">
+      <div className="flex items-center justify-around h-[var(--nav-height)] max-w-2xl mx-auto">
         {tabs.map(({ path, label, icon: Icon }) => {
           const isActive = location.pathname === path;
           return (

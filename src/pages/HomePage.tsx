@@ -1,22 +1,12 @@
-import PALogo from "@/components/PALogo";
+import PageShell from "@/components/PageShell";
 import { ArrowDown } from "lucide-react";
-
-const skills = [
-  "Kubernetes", "Docker", "Terraform", "AWS", "GCP", "CI/CD",
-  "React Native", "Flutter", "Swift", "Kotlin", "Jenkins", "GitHub Actions",
-];
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 
 const HomePage = () => {
-  return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-5 border-b border-border">
-        <PALogo size={44} />
-        <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-          Portfolio '26
-        </span>
-      </header>
+  const { skills } = usePortfolioData();
 
+  return (
+    <PageShell title="Portfolio '26">
       {/* Hero */}
       <section className="px-6 pt-16 pb-12">
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
@@ -51,10 +41,10 @@ const HomePage = () => {
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <span
-              key={skill}
+              key={skill.id}
               className="border border-border px-3 py-1.5 text-xs font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors cursor-default"
             >
-              {skill}
+              {skill.name}
             </span>
           ))}
         </div>
@@ -76,7 +66,7 @@ const HomePage = () => {
           </div>
         ))}
       </section>
-    </div>
+    </PageShell>
   );
 };
 

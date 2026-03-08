@@ -1,3 +1,4 @@
+import PageShell from "@/components/PageShell";
 import PALogo from "@/components/PALogo";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
@@ -10,14 +11,7 @@ const links = [
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen">
-      <header className="flex items-center justify-between px-6 py-5 border-b border-border">
-        <PALogo size={44} />
-        <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-          Contact
-        </span>
-      </header>
-
+    <PageShell title="Contact">
       <section className="px-6 pt-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-2">Let's Talk</h1>
         <p className="text-sm text-muted-foreground mb-10 max-w-sm leading-relaxed">
@@ -55,7 +49,7 @@ const ContactPage = () => {
           </p>
         </div>
       </section>
-    </div>
+    </PageShell>
   );
 };
 
