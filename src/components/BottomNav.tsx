@@ -14,14 +14,14 @@ const BottomNav = () => {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 backdrop-blur-sm">
-      <div className="flex items-center justify-around h-[var(--nav-height)] max-w-lg mx-auto">
+      <div className="flex items-center justify-around h-[var(--nav-height)] max-w-2xl mx-auto">
         {tabs.map(({ path, label, icon: Icon }) => {
           const isActive = location.pathname === path;
           return (
             <button
               key={path}
               onClick={() => navigate(path)}
-              className={`flex flex-col items-center gap-1 px-3 py-2 transition-colors ${
+              className={`flex flex-col items-center gap-1 px-4 py-2 transition-colors ${
                 isActive
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
