@@ -11,17 +11,32 @@ import {
   useAddProject,
   useRemoveProject,
 } from "@/hooks/usePortfolioData";
+import {
+  useAllArticles,
+  useAddArticle,
+  useUpdateArticle,
+  useRemoveArticle,
+  type Article,
+} from "@/hooks/useArticles";
+import ArticleEditor from "@/components/ArticleEditor";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Trash2, X } from "lucide-react";
+import { Plus, Trash2, X, Pencil } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ManagePage = () => {
   const { data: experiences = [] } = useExperiences();
   const { data: skills = [] } = useSkills();
   const { data: projects = [] } = useProjects();
+
+  const { data: articles = [] } = useAllArticles();
+  const addArticle = useAddArticle();
+  const updateArticle = useUpdateArticle();
+  const removeArticle = useRemoveArticle();
+  const [editingArticle, setEditingArticle] = useState<Article | null>(null);
+  const [showArticleEditor, setShowArticleEditor] = useState(false);
 
   const addExperience = useAddExperience();
   const removeExperience = useRemoveExperience();
@@ -80,10 +95,11 @@ const ManagePage = () => {
         </p>
 
         <Tabs defaultValue="experience">
-          <TabsList className="w-full grid grid-cols-3 mb-8">
+          <TabsList className="w-full grid grid-cols-4 mb-8">
             <TabsTrigger value="experience" className="text-xs font-mono uppercase">Experience</TabsTrigger>
             <TabsTrigger value="skills" className="text-xs font-mono uppercase">Skills</TabsTrigger>
             <TabsTrigger value="projects" className="text-xs font-mono uppercase">Projects</TabsTrigger>
+            <TabsTrigger value="blog" className="text-xs font-mono uppercase">Blog</TabsTrigger>
           </TabsList>
 
           {/* Experience Tab */}
@@ -174,6 +190,78 @@ const ManagePage = () => {
                   >
                     <Trash2 size={14} />
                   </button>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Blog Tab */}
+          <TabsContent value="blog" className="space-y-6">
+            {showArticleEditor || editingArticle ? (
+              <div className="border border-border p-4">
+                <ArticleEditor
+                  article={editingArticle}
+                  isPending={addArticle.isPending || updateArticle.isPending}
+                  onCancel={() => {
+                    setShowArticleEditor(false);
+                    setEditingArticle(null);
+                  }}
+                  onSave={(data) => {
+                    if (editingArticle) {
+                      updateArticle.mutate(
+                        { id: editingArticle.id, ...data },
+                        {
+                          onSuccess: () => {
+                            setEditingArticle(null);
+                            toast({ title: "Article updated" });
+                          },
+                        }
+                      );
+                    } else {
+                      addArticle.mutate(data, {
+                        onSuccess: () => {
+                          setShowArticleEditor(false);
+                          toast({ title: "Article created" });
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            ) : (
+              <Button onClick={() => setShowArticleEditor(true)} className="w-full gap-2">
+                <Plus size={14} /> New Article
+              </Button>
+            )}
+
+            <div className="space-y-0">
+              {articles.map((article) => (
+                <div key={article.id} className="border-t border-border py-4 flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-bold truncate">{article.title}</p>
+                      {!article.published && (
+                        <span className="text-[10px] font-mono uppercase border border-border px-1.5 py-0.5 text-muted-foreground">
+                          Draft
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs font-mono text-muted-foreground truncate">{article.excerpt || "No excerpt"}</p>
+                  </div>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      onClick={() => setEditingArticle(article)}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Pencil size={14} />
+                    </button>
+                    <button
+                      onClick={() => removeArticle.mutate(article.id, { onSuccess: () => toast({ title: "Article removed" }) })}
+                      className="text-muted-foreground hover:text-destructive transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
