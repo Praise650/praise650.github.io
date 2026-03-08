@@ -1,9 +1,9 @@
 import PageShell from "@/components/PageShell";
 import { ArrowDown } from "lucide-react";
-import { usePortfolioData } from "@/hooks/usePortfolioData";
+import { useSkills } from "@/hooks/usePortfolioData";
 
 const HomePage = () => {
-  const { skills } = usePortfolioData();
+  const { data: skills = [], isLoading } = useSkills();
 
   return (
     <PageShell title="Portfolio '26">
@@ -38,16 +38,20 @@ const HomePage = () => {
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
           Core Technologies
         </p>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <span
-              key={skill.id}
-              className="border border-border px-3 py-1.5 text-xs font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors cursor-default"
-            >
-              {skill.name}
-            </span>
-          ))}
-        </div>
+        {isLoading ? (
+          <p className="text-sm text-muted-foreground">Loading…</p>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span
+                key={skill.id}
+                className="border border-border px-3 py-1.5 text-xs font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors cursor-default"
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Stats */}
