@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Save, Upload, X } from "lucide-react";
+import { Plus, Save, Upload, X, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { uploadArticleImage } from "@/hooks/useArticles";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -149,7 +149,7 @@ const ArticleEditor = ({ article, onSave, onCancel, isPending }: ArticleEditorPr
           {published ? "Published" : "Draft"}
         </label>
         <Button onClick={handleSubmit} disabled={isPending || !title.trim()} className="gap-2">
-          {article ? <Save size={14} /> : <Plus size={14} />}
+          {isPending ? <Loader2 size={14} className="animate-spin" /> : article ? <Save size={14} /> : <Plus size={14} />}
           {article ? "Update" : "Create"}
         </Button>
       </div>

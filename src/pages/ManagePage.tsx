@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Trash2, X, Pencil } from "lucide-react";
+import { Plus, Trash2, X, Pencil, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ManagePage = () => {
@@ -111,7 +111,7 @@ const ManagePage = () => {
               <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} />
               <Textarea placeholder="Description" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} />
               <Button onClick={handleAddExperience} className="w-full gap-2" disabled={addExperience.isPending}>
-                <Plus size={14} /> Add Experience
+                {addExperience.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Experience
               </Button>
             </div>
             <div className="space-y-0">
@@ -148,7 +148,7 @@ const ManagePage = () => {
                 <option value="languages">Languages</option>
               </select>
               <Button onClick={handleAddSkill} className="w-full gap-2" disabled={addSkill.isPending}>
-                <Plus size={14} /> Add Skill
+                {addSkill.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Skill
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -174,7 +174,7 @@ const ManagePage = () => {
               <Input placeholder="Tags (comma-separated)" value={projForm.tags} onChange={(e) => setProjForm((f) => ({ ...f, tags: e.target.value }))} />
               <Textarea placeholder="Description" value={projForm.description} onChange={(e) => setProjForm((f) => ({ ...f, description: e.target.value }))} />
               <Button onClick={handleAddProject} className="w-full gap-2" disabled={addProject.isPending}>
-                <Plus size={14} /> Add Project
+                {addProject.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Project
               </Button>
             </div>
             <div className="space-y-0">
