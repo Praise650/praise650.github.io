@@ -64,6 +64,7 @@ const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
         ),
       }}
     />
+    </div>
   );
 };
 
