@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import PALogo from "@/components/PALogo";
+import { Loader2 } from "lucide-react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const LoginPage = () => {
             required
           />
           <Button type="submit" className="w-full" disabled={loading}>
+            {loading && <Loader2 size={14} className="animate-spin" />}
             {loading ? "Signing in…" : "Sign In"}
           </Button>
         </form>
