@@ -8,6 +8,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import ExperiencePage from "./pages/ExperiencePage";
 import ProjectsPage from "./pages/ProjectsPage";
+import BlogPage from "./pages/BlogPage";
+import ArticlePage from "./pages/ArticlePage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
 import ManagePage from "./pages/ManagePage";
