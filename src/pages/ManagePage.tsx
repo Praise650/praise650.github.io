@@ -174,7 +174,7 @@ const ManagePage = () => {
               <Input placeholder="Tags (comma-separated)" value={projForm.tags} onChange={(e) => setProjForm((f) => ({ ...f, tags: e.target.value }))} />
               <Textarea placeholder="Description" value={projForm.description} onChange={(e) => setProjForm((f) => ({ ...f, description: e.target.value }))} />
               <Button onClick={handleAddProject} className="w-full gap-2" disabled={addProject.isPending}>
-                <Plus size={14} /> Add Project
+                {addProject.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Project
               </Button>
             </div>
             <div className="space-y-0">

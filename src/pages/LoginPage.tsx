@@ -51,6 +51,7 @@ const LoginPage = () => {
             required
           />
           <Button type="submit" className="w-full" disabled={loading}>
+            {loading && <Loader2 size={14} className="animate-spin" />}
             {loading ? "Signing in…" : "Sign In"}
           </Button>
         </form>
