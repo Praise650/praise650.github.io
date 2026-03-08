@@ -29,7 +29,7 @@ const LoginPage = () => {
   return (
     <PageShell title="Login">
       <section className="px-6 pt-20 pb-10 flex flex-col items-center">
-        <PALogo size="lg" />
+        <PALogo size={64} />
         <h1 className="text-2xl font-bold mt-6 mb-2">Admin Access</h1>
         <p className="text-xs text-muted-foreground mb-8 font-mono uppercase tracking-widest">
           Sign in to manage portfolio

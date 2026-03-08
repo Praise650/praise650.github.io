@@ -1,7 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail, Settings } from "lucide-react";
-
-import { useLocation, useNavigate } from "react-router-dom";
 import { Home, Briefcase, FolderOpen, Mail } from "lucide-react";
 
 const tabs = [
