@@ -148,7 +148,7 @@ const ManagePage = () => {
                 <option value="languages">Languages</option>
               </select>
               <Button onClick={handleAddSkill} className="w-full gap-2" disabled={addSkill.isPending}>
-                <Plus size={14} /> Add Skill
+                {addSkill.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Skill
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
