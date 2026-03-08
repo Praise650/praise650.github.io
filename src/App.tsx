@@ -23,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <BottomNav />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/experience" element={<ExperiencePage />} />
@@ -34,7 +35,6 @@ const App = () => (
           <Route path="/manage" element={<ProtectedRoute><ManagePage /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <BottomNav />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
