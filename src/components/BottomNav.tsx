@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mail, Settings } from "lucide-react";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },
-  { path: "/experience", label: "Experience", icon: Briefcase },
+  { path: "/experience", label: "Work", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
   { path: "/contact", label: "Contact", icon: Mail },
+  { path: "/manage", label: "Manage", icon: Settings },
 ];
 
 const BottomNav = () => {
@@ -21,7 +22,7 @@ const BottomNav = () => {
             <button
               key={path}
               onClick={() => navigate(path)}
-              className={`flex flex-col items-center gap-1 px-4 py-2 transition-colors ${
+              className={`flex flex-col items-center gap-1 px-3 py-2 transition-colors ${
                 isActive
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
