@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import PALogo from "@/components/PALogo";
+import { Loader2 } from "lucide-react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
