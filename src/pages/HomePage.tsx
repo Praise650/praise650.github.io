@@ -61,6 +61,7 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+      </div>
     </PageShell>
   );
 };
