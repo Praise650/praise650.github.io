@@ -48,7 +48,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
 
       {/* Mobile Header */}
       <header className="flex md:hidden items-center justify-between px-6 py-6 sticky top-0 bg-background/95 backdrop-blur z-40 border-b border-border">
-        <Link to="/about">
+        <Link to="/">
           <PALogo size={40} />
         </Link>
         <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
