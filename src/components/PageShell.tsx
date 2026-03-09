@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 
 const tabs = [
   { path: "/", label: "Home" },
+  { path: "/about", label: "About" },
   { path: "/experience", label: "Work" },
   { path: "/projects", label: "Projects" },
   { path: "/blog", label: "Writing" },
@@ -21,7 +22,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
     <div className="min-h-screen w-full flex flex-col font-sans selection:bg-foreground selection:text-background">
       {/* Desktop Header */}
       <header className="hidden md:flex items-center justify-between px-12 lg:px-24 py-12">
-        <Link to="/about" className="hover:opacity-70 transition-opacity">
+        <Link to="/" className="hover:opacity-70 transition-opacity">
           <PALogo size={48} />
         </Link>
 
@@ -47,7 +48,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
 
       {/* Mobile Header */}
       <header className="flex md:hidden items-center justify-between px-6 py-6 sticky top-0 bg-background/95 backdrop-blur z-40 border-b border-border">
-        <Link to="/about">
+        <Link to="/">
           <PALogo size={40} />
         </Link>
         <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
