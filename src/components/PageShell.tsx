@@ -33,7 +33,9 @@ const PageShell = ({ title, children }: PageShellProps) => {
 
       {/* Desktop/Tablet header with integrated nav */}
       <header className="hidden md:flex items-center justify-between px-8 py-5 border-b border-border">
-        <PALogo size={44} />
+        <Link to="/about">
+          <PALogo size={44} />
+        </Link>
 
         <nav className="flex items-center gap-1">
           {tabs.map(({ path, label, icon: Icon }) => {
