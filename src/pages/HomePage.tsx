@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import PageShell from "@/components/PageShell";
+import { ArrowRight } from "lucide-react";
 
 const skills = [
   "Kotlin", "Swift", "Flutter", "React Native",
