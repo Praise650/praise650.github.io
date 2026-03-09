@@ -2,7 +2,6 @@ import PALogo from "@/components/PALogo";
 import { useLocation, Link } from "react-router-dom";
 
 const tabs = [
-  { path: "/", label: "Home" },
   { path: "/about", label: "About" },
   { path: "/experience", label: "Work" },
   { path: "/projects", label: "Projects" },
@@ -20,25 +19,28 @@ const PageShell = ({ title, children }: PageShellProps) => {
   return (
     <div className="min-h-screen w-full flex flex-col font-sans selection:bg-foreground selection:text-background">
       {/* Desktop Header */}
-      <header className="hidden md:flex items-center justify-between px-12 lg:px-24 py-12">
-        <Link to="/" className="hover:opacity-70 transition-opacity">
-          <PALogo size={48} />
+      <header className="hidden md:flex items-center justify-between px-16 lg:px-24 xl:px-32 py-10">
+        <Link to="/" className="hover:opacity-60 transition-opacity duration-300">
+          <PALogo size={44} />
         </Link>
 
-        <nav className="flex items-center gap-10">
+        <nav className="flex items-center gap-12">
           {tabs.map(({ path, label }) => {
             const isActive = location.pathname === path || (path !== "/" && location.pathname.startsWith(path));
             return (
               <Link
                 key={path}
                 to={path}
-                className={`text-xs font-mono uppercase tracking-widest transition-all ${
+                className={`relative text-[11px] font-mono uppercase tracking-[0.2em] transition-colors duration-300 ${
                   isActive
-                    ? "text-foreground font-bold"
+                    ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {label}
+                {isActive && (
+                  <span className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground" />
+                )}
               </Link>
             );
           })}
@@ -46,17 +48,17 @@ const PageShell = ({ title, children }: PageShellProps) => {
       </header>
 
       {/* Mobile Header */}
-      <header className="flex md:hidden items-center justify-between px-6 py-6 sticky top-0 bg-background/95 backdrop-blur z-40 border-b border-border">
+      <header className="flex md:hidden items-center justify-between px-6 py-5 sticky top-0 bg-background/95 backdrop-blur-sm z-40 border-b border-border/50">
         <Link to="/">
-          <PALogo size={40} />
+          <PALogo size={36} />
         </Link>
-        <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
           {title}
         </span>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 w-full max-w-5xl mx-auto px-6 md:px-12 pb-24 md:pb-32 pt-8 md:pt-16 flex flex-col">
+      <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 md:px-16 lg:px-20 pb-24 md:pb-40 pt-6 md:pt-12">
         {children}
       </main>
     </div>
