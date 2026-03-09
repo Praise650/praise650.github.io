@@ -10,8 +10,9 @@ const skills = [
 const HomePage = () => {
   return (
     <PageShell title="Portfolio '26">
-      {/* Hero */}
-      <section className="flex flex-col justify-center min-h-[60vh] md:min-h-[50vh] animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+      <div className="flex flex-col md:min-h-[calc(100vh-10rem)]">
+        {/* Hero */}
+        <section className="flex flex-col justify-center flex-1 min-h-[60vh] md:min-h-0 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
           Mobile & DevOps Engineer
         </p>
