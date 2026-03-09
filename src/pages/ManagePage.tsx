@@ -88,117 +88,125 @@ const ManagePage = () => {
 
   return (
     <PageShell title="Manage">
-      <section className="px-6 pt-10 pb-10">
-        <h1 className="text-4xl md:text-5xl font-bold mb-2">Manage</h1>
-        <p className="text-sm text-muted-foreground mb-8">
-          Add or remove portfolio content dynamically.
-        </p>
+      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+        <section className="mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Dashboard.</h1>
+          <p className="text-lg text-muted-foreground">
+            Manage portfolio content and articles.
+          </p>
+        </section>
 
-        <Tabs defaultValue="experience">
-          <TabsList className="w-full grid grid-cols-4 mb-8">
-            <TabsTrigger value="experience" className="text-xs font-mono uppercase">Experience</TabsTrigger>
-            <TabsTrigger value="skills" className="text-xs font-mono uppercase">Skills</TabsTrigger>
-            <TabsTrigger value="projects" className="text-xs font-mono uppercase">Projects</TabsTrigger>
-            <TabsTrigger value="blog" className="text-xs font-mono uppercase">Blog</TabsTrigger>
+        <Tabs defaultValue="experience" className="w-full">
+          <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 mb-12 h-auto p-1 bg-muted">
+            <TabsTrigger value="experience" className="text-xs font-mono uppercase tracking-widest py-3">Experience</TabsTrigger>
+            <TabsTrigger value="skills" className="text-xs font-mono uppercase tracking-widest py-3">Skills</TabsTrigger>
+            <TabsTrigger value="projects" className="text-xs font-mono uppercase tracking-widest py-3">Projects</TabsTrigger>
+            <TabsTrigger value="blog" className="text-xs font-mono uppercase tracking-widest py-3">Blog</TabsTrigger>
           </TabsList>
 
-          {/* Experience Tab */}
-          <TabsContent value="experience" className="space-y-6">
-            <div className="space-y-3 border border-border p-4">
-              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Add New Experience</p>
-              <Input placeholder="Role" value={expForm.role} onChange={(e) => setExpForm((f) => ({ ...f, role: e.target.value }))} />
-              <Input placeholder="Company" value={expForm.company} onChange={(e) => setExpForm((f) => ({ ...f, company: e.target.value }))} />
-              <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} />
-              <Textarea placeholder="Description" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} />
-              <Button onClick={handleAddExperience} className="w-full gap-2" disabled={addExperience.isPending}>
+          <TabsContent value="experience" className="space-y-8">
+            <div className="space-y-4 border border-border p-6 bg-card">
+              <p className="text-sm font-mono uppercase tracking-widest font-bold">Add New Experience</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input placeholder="Role" value={expForm.role} onChange={(e) => setExpForm((f) => ({ ...f, role: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+                <Input placeholder="Company" value={expForm.company} onChange={(e) => setExpForm((f) => ({ ...f, company: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              </div>
+              <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Textarea placeholder="Description" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} className="rounded-none min-h-[100px] focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Button onClick={handleAddExperience} className="w-full gap-2 rounded-none font-mono uppercase tracking-widest text-xs h-12" disabled={addExperience.isPending}>
                 {addExperience.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Experience
               </Button>
             </div>
-            <div className="space-y-0">
+            <div className="space-y-4">
               {experiences.map((exp) => (
-                <div key={exp.id} className="border-t border-border py-4 flex items-start justify-between gap-4">
+                <div key={exp.id} className="border border-border p-6 flex items-start justify-between gap-4 group hover:bg-muted/50 transition-colors">
                   <div className="min-w-0">
-                    <p className="text-sm font-bold truncate">{exp.role}</p>
-                    <p className="text-xs font-mono text-muted-foreground">{exp.company} · {exp.period}</p>
+                    <p className="text-lg font-bold truncate mb-1">{exp.role}</p>
+                    <p className="text-sm font-mono text-muted-foreground">{exp.company} · {exp.period}</p>
                   </div>
                   <button
                     onClick={() => removeExperience.mutate(exp.id, { onSuccess: () => toast({ title: "Removed" }) })}
-                    className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
+                    className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors shrink-0 rounded"
                   >
-                    <Trash2 size={14} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               ))}
             </div>
           </TabsContent>
 
-          {/* Skills Tab */}
-          <TabsContent value="skills" className="space-y-6">
-            <div className="space-y-3 border border-border p-4">
-              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Add New Skill</p>
-              <Input placeholder="Skill name" value={skillForm.name} onChange={(e) => setSkillForm((f) => ({ ...f, name: e.target.value }))} />
-              <select
-                value={skillForm.category}
-                onChange={(e) => setSkillForm((f) => ({ ...f, category: e.target.value }))}
-                className="w-full h-10 border border-input bg-background px-3 text-sm font-mono"
-              >
-                <option value="infrastructure">Infrastructure</option>
-                <option value="mobile">Mobile</option>
-                <option value="tools">Tools</option>
-                <option value="languages">Languages</option>
-              </select>
-              <Button onClick={handleAddSkill} className="w-full gap-2" disabled={addSkill.isPending}>
+          <TabsContent value="skills" className="space-y-8">
+            <div className="space-y-4 border border-border p-6 bg-card">
+              <p className="text-sm font-mono uppercase tracking-widest font-bold">Add New Skill</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input placeholder="Skill name" value={skillForm.name} onChange={(e) => setSkillForm((f) => ({ ...f, name: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+                <select
+                  value={skillForm.category}
+                  onChange={(e) => setSkillForm((f) => ({ ...f, category: e.target.value }))}
+                  className="w-full h-10 border border-input bg-background px-3 text-sm font-mono focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
+                >
+                  <option value="infrastructure">Infrastructure</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="tools">Tools</option>
+                  <option value="languages">Languages</option>
+                </select>
+              </div>
+              <Button onClick={handleAddSkill} className="w-full gap-2 rounded-none font-mono uppercase tracking-widest text-xs h-12" disabled={addSkill.isPending}>
                 {addSkill.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Skill
               </Button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (
-                <span key={skill.id} className="inline-flex items-center gap-1.5 border border-border px-3 py-1.5 text-xs font-mono uppercase tracking-wider group">
+                <span key={skill.id} className="inline-flex items-center gap-2 border border-border pl-4 pr-2 py-2 text-sm font-mono uppercase tracking-wider group hover:border-foreground transition-colors bg-card">
                   {skill.name}
                   <button
                     onClick={() => removeSkill.mutate(skill.id, { onSuccess: () => toast({ title: "Removed" }) })}
-                    className="text-muted-foreground hover:text-destructive transition-colors"
+                    className="p-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors rounded"
                   >
-                    <X size={10} />
+                    <X size={14} />
                   </button>
                 </span>
               ))}
             </div>
           </TabsContent>
 
-          {/* Projects Tab */}
-          <TabsContent value="projects" className="space-y-6">
-            <div className="space-y-3 border border-border p-4">
-              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Add New Project</p>
-              <Input placeholder="Project title" value={projForm.title} onChange={(e) => setProjForm((f) => ({ ...f, title: e.target.value }))} />
-              <Input placeholder="Tags (comma-separated)" value={projForm.tags} onChange={(e) => setProjForm((f) => ({ ...f, tags: e.target.value }))} />
-              <Textarea placeholder="Description" value={projForm.description} onChange={(e) => setProjForm((f) => ({ ...f, description: e.target.value }))} />
-              <Button onClick={handleAddProject} className="w-full gap-2" disabled={addProject.isPending}>
+          <TabsContent value="projects" className="space-y-8">
+            <div className="space-y-4 border border-border p-6 bg-card">
+              <p className="text-sm font-mono uppercase tracking-widest font-bold">Add New Project</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input placeholder="Project title" value={projForm.title} onChange={(e) => setProjForm((f) => ({ ...f, title: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+                <Input placeholder="Tags (comma-separated)" value={projForm.tags} onChange={(e) => setProjForm((f) => ({ ...f, tags: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              </div>
+              <Textarea placeholder="Description" value={projForm.description} onChange={(e) => setProjForm((f) => ({ ...f, description: e.target.value }))} className="rounded-none min-h-[100px] focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Button onClick={handleAddProject} className="w-full gap-2 rounded-none font-mono uppercase tracking-widest text-xs h-12" disabled={addProject.isPending}>
                 {addProject.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Project
               </Button>
             </div>
-            <div className="space-y-0">
+            <div className="space-y-4">
               {projects.map((proj) => (
-                <div key={proj.id} className="border-t border-border py-4 flex items-start justify-between gap-4">
+                <div key={proj.id} className="border border-border p-6 flex items-start justify-between gap-4 group hover:bg-muted/50 transition-colors">
                   <div className="min-w-0">
-                    <p className="text-sm font-bold truncate">{proj.title}</p>
-                    <p className="text-xs font-mono text-muted-foreground">{proj.tags.join(", ")}</p>
+                    <p className="text-lg font-bold truncate mb-2">{proj.title}</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {proj.tags.map(t => (
+                        <span key={t} className="text-[10px] font-mono uppercase tracking-wider border border-border px-2 py-0.5 bg-background">{t}</span>
+                      ))}
+                    </div>
                   </div>
                   <button
                     onClick={() => removeProject.mutate(proj.id, { onSuccess: () => toast({ title: "Removed" }) })}
-                    className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
+                    className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors shrink-0 rounded"
                   >
-                    <Trash2 size={14} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               ))}
             </div>
           </TabsContent>
 
-          {/* Blog Tab */}
-          <TabsContent value="blog" className="space-y-6">
+          <TabsContent value="blog" className="space-y-8">
             {showArticleEditor || editingArticle ? (
-              <div className="border border-border p-4">
+              <div className="border border-border p-6 bg-card">
                 <ArticleEditor
                   article={editingArticle}
                   isPending={addArticle.isPending || updateArticle.isPending}
@@ -229,37 +237,37 @@ const ManagePage = () => {
                 />
               </div>
             ) : (
-              <Button onClick={() => setShowArticleEditor(true)} className="w-full gap-2">
-                <Plus size={14} /> New Article
+              <Button onClick={() => setShowArticleEditor(true)} className="w-full gap-2 rounded-none font-mono uppercase tracking-widest text-xs h-16 border-dashed border-2 bg-transparent text-foreground hover:bg-muted" variant="outline">
+                <Plus size={16} /> Create New Article
               </Button>
             )}
 
-            <div className="space-y-0">
+            <div className="space-y-4">
               {articles.map((article) => (
-                <div key={article.id} className="border-t border-border py-4 flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <p className="text-sm font-bold truncate">{article.title}</p>
+                <div key={article.id} className="border border-border p-6 flex items-start justify-between gap-4 group hover:bg-muted/50 transition-colors">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <p className="text-lg font-bold truncate">{article.title}</p>
                       {!article.published && (
-                        <span className="text-[10px] font-mono uppercase border border-border px-1.5 py-0.5 text-muted-foreground">
+                        <span className="text-[10px] font-mono uppercase border border-border px-2 py-0.5 bg-muted text-muted-foreground">
                           Draft
                         </span>
                       )}
                     </div>
-                    <p className="text-xs font-mono text-muted-foreground truncate">{article.excerpt || "No excerpt"}</p>
+                    <p className="text-sm font-mono text-muted-foreground line-clamp-2">{article.excerpt || "No excerpt"}</p>
                   </div>
                   <div className="flex gap-2 shrink-0">
                     <button
                       onClick={() => setEditingArticle(article)}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
                     >
-                      <Pencil size={14} />
+                      <Pencil size={16} />
                     </button>
                     <button
                       onClick={() => removeArticle.mutate(article.id, { onSuccess: () => toast({ title: "Article removed" }) })}
-                      className="text-muted-foreground hover:text-destructive transition-colors"
+                      className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors rounded"
                     >
-                      <Trash2 size={14} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 </div>
@@ -267,7 +275,7 @@ const ManagePage = () => {
             </div>
           </TabsContent>
         </Tabs>
-      </section>
+      </div>
     </PageShell>
   );
 };
