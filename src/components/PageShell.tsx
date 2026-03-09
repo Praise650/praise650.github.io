@@ -1,5 +1,5 @@
 import PALogo from "@/components/PALogo";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Home, Briefcase, FolderOpen, Mail, BookOpen } from "lucide-react";
 
 const tabs = [
