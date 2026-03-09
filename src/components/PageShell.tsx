@@ -22,7 +22,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
     <div className="min-h-screen w-full flex flex-col font-sans selection:bg-foreground selection:text-background">
       {/* Desktop Header */}
       <header className="hidden md:flex items-center justify-between px-12 lg:px-24 py-12">
-        <Link to="/about" className="hover:opacity-70 transition-opacity">
+        <Link to="/" className="hover:opacity-70 transition-opacity">
           <PALogo size={48} />
         </Link>
 
