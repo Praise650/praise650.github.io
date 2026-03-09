@@ -1,6 +1,6 @@
 import PageShell from "@/components/PageShell";
 import PALogo from "@/components/PALogo";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
 
 const links = [
   { icon: Mail, label: "Email", value: "praise@example.com", href: "mailto:praise@example.com" },
@@ -12,43 +12,44 @@ const links = [
 const ContactPage = () => {
   return (
     <PageShell title="Contact">
-      <section className="px-6 pt-10">
-        <h1 className="text-4xl md:text-5xl font-bold mb-2">Let's Talk</h1>
-        <p className="text-sm text-muted-foreground mb-10 max-w-sm leading-relaxed">
-          Open to new opportunities, collaborations, and interesting
-          conversations about mobile and infrastructure.
-        </p>
+      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out flex flex-col min-h-[70vh]">
+        <section className="mb-20">
+          <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight">Let's Talk.</h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            Open to new opportunities, collaborations, and interesting
+            conversations about mobile and infrastructure.
+          </p>
+        </section>
 
-        <div className="space-y-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-24">
           {links.map(({ icon: Icon, label, value, href }) => (
             <a
               key={label}
               href={href}
-              className="flex items-center justify-between border-t border-border py-6 group hover:bg-muted/50 -mx-6 px-6 transition-colors"
+              className="group p-8 border border-border hover:bg-foreground hover:text-background transition-all duration-500 flex flex-col gap-12"
             >
-              <div className="flex items-center gap-4">
-                <Icon size={18} strokeWidth={1.5} />
-                <div>
-                  <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                    {label}
-                  </p>
-                  <p className="text-sm font-medium mt-0.5">{value}</p>
-                </div>
+              <div className="flex justify-between items-start">
+                <Icon size={24} strokeWidth={1.5} className="group-hover:text-background text-foreground" />
+                <ArrowUpRight size={24} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <span className="text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors">
-                →
-              </span>
+              
+              <div>
+                <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground group-hover:text-background/70 mb-2">
+                  {label}
+                </p>
+                <p className="text-lg font-medium">{value}</p>
+              </div>
             </a>
           ))}
         </div>
 
-        <div className="border-t border-border mt-0 pt-12 pb-8 text-center">
-          <PALogo size={56} />
-          <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-4">
-            Praise Afuwape © 2026
+        <div className="mt-auto pt-12 border-t border-border flex flex-col items-center gap-6">
+          <PALogo size={64} />
+          <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground">
+            Praise Afuwape © {new Date().getFullYear()}
           </p>
         </div>
-      </section>
+      </div>
     </PageShell>
   );
 };

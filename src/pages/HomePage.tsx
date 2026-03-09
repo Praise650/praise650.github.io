@@ -1,5 +1,4 @@
 import PageShell from "@/components/PageShell";
-import { ArrowDown } from "lucide-react";
 
 const skills = [
   "Kotlin", "Swift", "Flutter", "React Native",
@@ -12,41 +11,31 @@ const HomePage = () => {
   return (
     <PageShell title="Portfolio '26">
       {/* Hero */}
-      <section className="px-6 pt-16 pb-12">
-        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
+      <section className="flex flex-col justify-center min-h-[60vh] md:min-h-[50vh] animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
           Mobile & DevOps Engineer
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] mb-6">
+        <h1 className="text-5xl md:text-8xl font-bold leading-[1.1] md:leading-[1.05] tracking-tight mb-8">
           Praise
-          <br />
-          Afuwape
+          <br className="hidden md:block" /> Afuwape.
         </h1>
-        <p className="text-base text-muted-foreground max-w-md leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
           6+ years crafting scalable mobile applications and building robust
           infrastructure pipelines. Bridging the gap between development and
           operations.
         </p>
-        <div className="mt-10 flex items-center gap-2 text-muted-foreground">
-          <ArrowDown size={14} />
-          <span className="text-xs font-mono uppercase tracking-widest">
-            Scroll to explore
-          </span>
-        </div>
       </section>
 
-      {/* Divider */}
-      <div className="border-t border-border" />
-
       {/* Skills */}
-      <section className="px-6 py-12">
-        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
+      <section className="pt-24 md:pt-32 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 ease-out fill-mode-both">
+        <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-8">
           Core Technologies
-        </p>
-        <div className="flex flex-wrap gap-2">
+        </h2>
+        <div className="flex flex-wrap gap-3 md:gap-4">
           {skills.map((skill) => (
             <span
               key={skill}
-              className="border border-border px-3 py-1.5 text-xs font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors cursor-default"
+              className="text-xs md:text-sm font-mono uppercase tracking-wider px-4 py-2 border border-border hover:bg-foreground hover:text-background transition-all duration-300 cursor-default"
             >
               {skill}
             </span>
@@ -55,20 +44,21 @@ const HomePage = () => {
       </section>
 
       {/* Stats */}
-      <div className="border-t border-border" />
-      <section className="px-6 py-12 grid grid-cols-3 gap-4">
-        {[
-          { num: "6+", label: "Years" },
-          { num: "30+", label: "Projects" },
-          { num: "15+", label: "Clients" },
-        ].map((stat) => (
-          <div key={stat.label} className="text-center">
-            <p className="text-3xl md:text-4xl font-mono font-bold">{stat.num}</p>
-            <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-1">
-              {stat.label}
-            </p>
-          </div>
-        ))}
+      <section className="pt-24 md:pt-32 pb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 ease-out fill-mode-both">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          {[
+            { num: "6+", label: "Years Experience" },
+            { num: "30+", label: "Projects Shipped" },
+            { num: "15+", label: "Happy Clients" },
+          ].map((stat) => (
+            <div key={stat.label} className="border-l border-border pl-6">
+              <p className="text-4xl md:text-5xl font-mono font-bold mb-2">{stat.num}</p>
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
     </PageShell>
   );

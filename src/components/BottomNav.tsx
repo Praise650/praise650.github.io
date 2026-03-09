@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Briefcase, FolderOpen, Mail, BookOpen } from "lucide-react";
+import { Home, Briefcase, FolderOpen, Mail, PenTool } from "lucide-react";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },
   { path: "/experience", label: "Work", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
-  { path: "/blog", label: "Blog", icon: BookOpen },
+  { path: "/blog", label: "Writing", icon: PenTool },
   { path: "/contact", label: "Contact", icon: Mail },
 ];
 
@@ -14,22 +14,22 @@ const BottomNav = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-background/95 backdrop-blur-sm md:hidden">
-      <div className="flex items-center justify-around h-[var(--nav-height)] max-w-2xl mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-border md:hidden pb-safe">
+      <div className="flex items-center justify-around h-[calc(var(--nav-height)+env(safe-area-inset-bottom))] max-w-md mx-auto px-2">
         {tabs.map(({ path, label, icon: Icon }) => {
-          const isActive = location.pathname === path;
+          const isActive = location.pathname === path || (path !== "/" && location.pathname.startsWith(path));
           return (
             <button
               key={path}
               onClick={() => navigate(path)}
-              className={`flex flex-col items-center gap-1 px-3 py-2 transition-colors ${
+              className={`flex flex-col items-center justify-center gap-1.5 w-16 h-16 transition-colors ${
                 isActive
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              <Icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
-              <span className="text-[10px] font-mono uppercase tracking-wider">
+              <Icon size={18} strokeWidth={isActive ? 2 : 1.5} />
+              <span className="text-[9px] font-mono uppercase tracking-widest">
                 {label}
               </span>
             </button>
