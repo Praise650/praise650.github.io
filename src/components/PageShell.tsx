@@ -56,7 +56,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 w-full max-w-5xl mx-auto px-6 md:px-12 pb-24 md:pb-32 pt-8 md:pt-16">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-6 md:px-12 pb-24 md:pb-32 pt-8 md:pt-16 flex flex-col">
         {children}
       </main>
     </div>
