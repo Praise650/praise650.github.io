@@ -1,5 +1,5 @@
 import PALogo from "@/components/PALogo";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Home, Briefcase, FolderOpen, Mail, BookOpen } from "lucide-react";
 
 const tabs = [
@@ -23,7 +23,9 @@ const PageShell = ({ title, children }: PageShellProps) => {
     <div className="min-h-screen w-full md:w-4/5 mx-auto border-x border-border">
       {/* Mobile header */}
       <header className="flex items-center justify-between px-6 py-5 border-b border-border md:hidden">
-        <PALogo size={44} />
+        <Link to="/about">
+          <PALogo size={44} />
+        </Link>
         <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
           {title}
         </span>
@@ -31,7 +33,9 @@ const PageShell = ({ title, children }: PageShellProps) => {
 
       {/* Desktop/Tablet header with integrated nav */}
       <header className="hidden md:flex items-center justify-between px-8 py-5 border-b border-border">
-        <PALogo size={44} />
+        <Link to="/about">
+          <PALogo size={44} />
+        </Link>
 
         <nav className="flex items-center gap-1">
           {tabs.map(({ path, label, icon: Icon }) => {
