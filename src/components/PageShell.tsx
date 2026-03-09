@@ -7,7 +7,6 @@ const tabs = [
   { path: "/experience", label: "Work" },
   { path: "/projects", label: "Projects" },
   { path: "/blog", label: "Writing" },
-  { path: "/contact", label: "Contact" },
 ];
 
 interface PageShellProps {
