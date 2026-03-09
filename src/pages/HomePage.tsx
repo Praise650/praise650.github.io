@@ -63,6 +63,17 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+
+      {/* Contact CTA */}
+      <section className="pt-24 md:pt-32 pb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400 ease-out fill-mode-both">
+        <Link 
+          to="/contact" 
+          className="group inline-flex items-center gap-4 text-lg md:text-xl font-mono uppercase tracking-widest hover:text-muted-foreground transition-colors"
+        >
+          <span>Get in touch</span>
+          <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-300" />
+        </Link>
+      </section>
       </div>
     </PageShell>
   );
