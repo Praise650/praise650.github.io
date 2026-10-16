@@ -45,18 +45,26 @@ const ManagePage = () => {
   const addProject = useAddProject();
   const removeProject = useRemoveProject();
 
-  const [expForm, setExpForm] = useState({ role: "", company: "", period: "", description: "" });
+  const [expForm, setExpForm] = useState({ role: "", company: "", period: "", description: "", location: "", employment_type: "", highlights: "", details: "", tech: "" });
   const [skillForm, setSkillForm] = useState({ name: "", category: "infrastructure" });
   const [projForm, setProjForm] = useState({ title: "", tags: "", description: "" });
 
   const handleAddExperience = () => {
     if (!expForm.role || !expForm.company) return;
-    addExperience.mutate(expForm, {
-      onSuccess: () => {
-        setExpForm({ role: "", company: "", period: "", description: "" });
-        toast({ title: "Experience added" });
+    const lines = (v: string) => v.split("\n").map((l) => l.replace(/^\s*[-*•]\s+/, "").trim()).filter(Boolean);
+    addExperience.mutate(
+      {
+        ...expForm,
+        highlights: lines(expForm.highlights),
+        tech: expForm.tech.split(",").map((t) => t.trim()).filter(Boolean),
       },
-    });
+      {
+        onSuccess: () => {
+          setExpForm({ role: "", company: "", period: "", description: "", location: "", employment_type: "", highlights: "", details: "", tech: "" });
+          toast({ title: "Experience added" });
+        },
+      },
+    );
   };
 
   const handleAddSkill = () => {
@@ -111,8 +119,15 @@ const ManagePage = () => {
                 <Input placeholder="Role" value={expForm.role} onChange={(e) => setExpForm((f) => ({ ...f, role: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
                 <Input placeholder="Company" value={expForm.company} onChange={(e) => setExpForm((f) => ({ ...f, company: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
               </div>
-              <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
-              <Textarea placeholder="Description" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} className="rounded-none min-h-[100px] focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Input placeholder="Period (e.g. 2023 — Present)" value={expForm.period} onChange={(e) => setExpForm((f) => ({ ...f, period: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+                <Input placeholder="Location (e.g. Remote, US)" value={expForm.location} onChange={(e) => setExpForm((f) => ({ ...f, location: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+                <Input placeholder="Type (e.g. Contract)" value={expForm.employment_type} onChange={(e) => setExpForm((f) => ({ ...f, employment_type: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              </div>
+              <Input placeholder="One-line summary" value={expForm.description} onChange={(e) => setExpForm((f) => ({ ...f, description: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Textarea placeholder="Highlights shown on the list (2-3, one per line)" value={expForm.highlights} onChange={(e) => setExpForm((f) => ({ ...f, highlights: e.target.value }))} className="rounded-none min-h-[80px] focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Textarea placeholder="Details shown in the bottom sheet (markdown: **headings**, - bullets)" value={expForm.details} onChange={(e) => setExpForm((f) => ({ ...f, details: e.target.value }))} className="rounded-none min-h-[180px] font-mono text-sm focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
+              <Input placeholder="Tech / tools (comma separated)" value={expForm.tech} onChange={(e) => setExpForm((f) => ({ ...f, tech: e.target.value }))} className="rounded-none focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-0" />
               <Button onClick={handleAddExperience} className="w-full gap-2 rounded-none font-mono uppercase tracking-widest text-xs h-12" disabled={addExperience.isPending}>
                 {addExperience.isPending ? <Loader2 size={14} className="animate-spin" /> : <Plus size={14} />} Add Experience
               </Button>

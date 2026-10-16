@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "seed": "node --env-file=.env scripts/seed.mjs"
+    "seed": "node --env-file=.env scripts/seed.mjs",
+    "migrate:articles": "node --env-file=.env scripts/migrate-articles.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

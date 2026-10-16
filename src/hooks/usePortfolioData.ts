@@ -8,7 +8,24 @@ export interface Experience {
   company: string;
   period: string;
   description: string;
+  location: string;
+  employment_type: string;
+  highlights: string[];
+  details: string;
+  tech: string[];
   sort_order: number;
+}
+
+export interface NewExperience {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  location: string;
+  employment_type: string;
+  highlights: string[];
+  details: string;
+  tech: string[];
 }
 
 export interface Skill {
@@ -73,7 +90,7 @@ async function getCurrentUserId() {
 export function useAddExperience() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (exp: { role: string; company: string; period: string; description: string }) => {
+    mutationFn: async (exp: NewExperience) => {
       const user_id = await getCurrentUserId();
       const { error } = await supabase.from("experiences").insert({ ...exp, user_id });
       if (error) throw error;

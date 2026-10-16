@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+supabase/.temp/
 scripts/
 docs/
 .env

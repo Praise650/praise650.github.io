@@ -58,30 +58,45 @@ export type Database = {
           company: string
           created_at: string
           description: string
+          details: string
+          employment_type: string
+          highlights: string[]
           id: string
+          location: string
           period: string
           role: string
           sort_order: number
+          tech: string[]
           user_id: string
         }
         Insert: {
           company: string
           created_at?: string
           description?: string
+          details?: string
+          employment_type?: string
+          highlights?: string[]
           id?: string
+          location?: string
           period?: string
           role: string
           sort_order?: number
+          tech?: string[]
           user_id: string
         }
         Update: {
           company?: string
           created_at?: string
           description?: string
+          details?: string
+          employment_type?: string
+          highlights?: string[]
           id?: string
+          location?: string
           period?: string
           role?: string
           sort_order?: number
+          tech?: string[]
           user_id?: string
         }
         Relationships: []
