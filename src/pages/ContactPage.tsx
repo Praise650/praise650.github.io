@@ -3,10 +3,10 @@ import PALogo from "@/components/PALogo";
 import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
 
 const links = [
-  { icon: Mail, label: "Email", value: "praise@example.com", href: "mailto:praise@example.com" },
-  { icon: Github, label: "GitHub", value: "github.com/praiseafuwape", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/praiseafuwape", href: "#" },
-  { icon: Twitter, label: "Twitter / X", value: "@praiseafuwape", href: "#" },
+  { icon: Mail, label: "Email", value: "ayokanmi1275@gmail.com", href: "mailto:ayokanmi1275@gmail.com" },
+  { icon: Github, label: "GitHub", value: "github.com/praise650", href: "https://github.com/praise650" },
+  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/praiseafuwape", href: "https://www.linkedin.com/in/praiseafuwape/" },
+  { icon: Twitter, label: "Twitter / X", value: "@PraiseAfuwape", href: "https://x.com/PraiseAfuwape" },
 ];
 
 const ContactPage = () => {
@@ -29,6 +29,7 @@ const ContactPage = () => {
             <a
               key={label}
               href={href}
+              {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
               className="group p-8 md:p-10 border border-border/60 hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-500 flex flex-col gap-10 md:gap-14"
             >
               <div className="flex justify-between items-start">

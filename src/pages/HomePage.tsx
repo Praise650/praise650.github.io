@@ -3,10 +3,8 @@ import PageShell from "@/components/PageShell";
 import { ArrowRight, ArrowDownRight } from "lucide-react";
 
 const skills = [
-  "Kotlin", "Swift", "Flutter", "React Native",
-  "Terraform", "Docker", "Kubernetes", "AWS",
-  "CI/CD", "GitHub Actions", "Jenkins", "Fastlane",
-  "TypeScript", "Go", "Python", "Dart",
+  "Flutter", "Ansible", "Docker", "Kubernetes", "AWS",
+  "CI/CD", "GitHub Actions", "Fastlane", "TypeScript", "Dart",
 ];
 
 const HomePage = () => {
@@ -62,9 +60,9 @@ const HomePage = () => {
       <section className="pt-20 md:pt-40 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 ease-out fill-mode-both">
         <div className="grid grid-cols-3 gap-6 md:gap-16">
           {[
-            { num: "6+", label: "Years" },
-            { num: "30+", label: "Projects" },
-            { num: "15+", label: "Clients" },
+            { num: "40+", label: "Services Run" },
+            { num: "95%", label: "Faster Releases" },
+            { num: "35%+", label: "Smaller Images" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="text-3xl md:text-5xl font-mono font-bold mb-2 md:mb-3">{stat.num}</p>
