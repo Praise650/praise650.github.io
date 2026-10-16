@@ -22,7 +22,7 @@ const HomePage = () => {
               <br /> Afuwape.
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-[1.8]">
-              6+ years crafting scalable mobile applications and building robust
+              5+ years crafting scalable mobile applications and building robust
               infrastructure pipelines. Bridging the gap between development and
               operations.
             </p>
