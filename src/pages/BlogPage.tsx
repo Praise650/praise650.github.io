@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal from "@/components/Reveal";
 import PageShell from "@/components/PageShell";
 import { usePublishedArticles } from "@/hooks/useArticles";
 import { format } from "date-fns";
@@ -40,8 +41,8 @@ const BlogPage = () => {
         ) : (
           <div className="border-t border-border pt-16 md:pt-20 space-y-16 md:space-y-20">
             {articles.map((article) => (
+              <Reveal key={article.id}>
               <Link
-                key={article.id}
                 to={`/blog/${article.slug}`}
                 className="block group"
               >
@@ -81,6 +82,7 @@ const BlogPage = () => {
                   </div>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         )}

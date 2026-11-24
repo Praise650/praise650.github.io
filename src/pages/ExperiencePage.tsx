@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
+import Reveal from "@/components/Reveal";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { useExperiences, type Experience } from "@/hooks/usePortfolioData";
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
@@ -62,7 +63,7 @@ const ExperiencePage = () => {
             {experiences.map((exp) => {
               const { highlights } = getContent(exp);
               return (
-                <div key={exp.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-16 group">
+                <Reveal key={exp.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-16 group">
                   <div className="md:col-span-3 pt-1">
                     <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
                       {exp.period}
@@ -89,7 +90,7 @@ const ExperiencePage = () => {
                       Show details
                     </button>
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>

@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import PageShell from "@/components/PageShell";
 import { Music, BookOpen, Dribbble, Code, Server, Smartphone, ArrowRight } from "lucide-react";
 
@@ -69,7 +70,7 @@ const AboutPage = () => {
         {/* Chapters */}
         <div className="space-y-20 md:space-y-32 border-t border-border pt-16 md:pt-24">
           {chapters.map((ch) => (
-            <section key={ch.label} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16 group">
+            <Reveal as="section" key={ch.label} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16 group">
               <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4">
                 <div className="p-2.5 border border-border rounded-full group-hover:bg-foreground group-hover:text-background transition-colors duration-500">
                   <ch.icon size={20} strokeWidth={1.5} />
@@ -86,7 +87,7 @@ const AboutPage = () => {
                   ))}
                 </div>
               </div>
-            </section>
+            </Reveal>
           ))}
         </div>
 
@@ -96,8 +97,8 @@ const AboutPage = () => {
             Beyond the Code
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {interests.map((item) => (
-              <div key={item.title} className="group">
+            {interests.map((item, i) => (
+              <Reveal key={item.title} delay={i * 120} className="group">
                 <div className="flex items-center gap-4 mb-5">
                   <div className="p-3 border border-border rounded-full group-hover:bg-foreground group-hover:text-background transition-colors duration-500">
                     <item.icon size={20} strokeWidth={1.3} />
@@ -105,7 +106,7 @@ const AboutPage = () => {
                   <h3 className="text-[11px] font-mono uppercase tracking-[0.2em]">{item.title}</h3>
                 </div>
                 <p className="text-sm text-muted-foreground leading-[1.85]">{item.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>

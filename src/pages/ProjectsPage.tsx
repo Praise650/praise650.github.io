@@ -1,4 +1,5 @@
 import PageShell from "@/components/PageShell";
+import Reveal from "@/components/Reveal";
 import { ExternalLink } from "lucide-react";
 import { useProjects } from "@/hooks/usePortfolioData";
 
@@ -35,8 +36,8 @@ const ProjectsPage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 md:gap-y-24 border-t border-border pt-16 md:pt-20">
-            {projects.map((project) => (
-              <div key={project.id} className="group flex flex-col">
+            {projects.map((project, i) => (
+              <Reveal key={project.id} delay={(i % 2) * 120} className="group flex flex-col hover:-translate-y-1">
                 <div className="flex gap-2 flex-wrap mb-5">
                   {project.tags.map((tag) => (
                     <span
@@ -67,7 +68,7 @@ const ProjectsPage = () => {
                     <ExternalLink size={12} />
                   </a>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         )}

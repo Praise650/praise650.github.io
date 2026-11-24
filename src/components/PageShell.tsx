@@ -1,4 +1,5 @@
 import PALogo from "@/components/PALogo";
+import ScrollProgress from "@/components/ScrollProgress";
 import { useLocation, Link } from "react-router-dom";
 
 const tabs = [
@@ -18,9 +19,10 @@ const PageShell = ({ title, children }: PageShellProps) => {
 
   return (
     <div className="min-h-screen w-full flex flex-col font-sans selection:bg-foreground selection:text-background">
+      <ScrollProgress />
       {/* Desktop Header */}
       <header className="hidden md:flex items-center justify-between px-16 lg:px-24 xl:px-32 py-10">
-        <Link to="/" className="hover:opacity-60 transition-opacity duration-300">
+        <Link to="/" className="hover:opacity-60 hover:rotate-6 transition-all duration-300">
           <PALogo size={44} />
         </Link>
 
@@ -38,9 +40,11 @@ const PageShell = ({ title, children }: PageShellProps) => {
                 }`}
               >
                 {label}
-                {isActive && (
-                  <span className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground" />
-                )}
+                <span
+                  className={`absolute -bottom-1.5 left-0 right-0 h-px bg-foreground origin-left transition-transform duration-500 ease-out ${
+                    isActive ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
               </Link>
             );
           })}
@@ -58,7 +62,7 @@ const PageShell = ({ title, children }: PageShellProps) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 md:px-16 lg:px-20 pb-24 md:pb-40 pt-6 md:pt-12">
+      <main key={location.pathname} className="animate-in fade-in slide-in-from-bottom-2 duration-500 flex-1 w-full max-w-[1100px] mx-auto px-6 md:px-16 lg:px-20 pb-24 md:pb-40 pt-6 md:pt-12">
         {children}
       </main>
     </div>
